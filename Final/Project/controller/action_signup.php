@@ -11,7 +11,7 @@
 require("../model/model_jobseeker.php");
 
 $firstname = $lastname=$fatherName=$motherName=$maratialStatus=$dob = $email=$uname = $psw = $psw_repeat = $gender = $skill =  "";
-$firstnameErr = $lastnameErr = $emailErr=$unameErr = $pswErr = $psw_repeatErr= $skillErr= $genderErr = "";
+$firstnameErr = $lastnameErr = $emailErr=$unameErr = $pswErr = $psw_repeatErr= $skillErr= $genderErr =$psw_not_match= "";
 $signup_status = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -79,9 +79,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $skillErr="Invalid skill";
     $counter=$counter+1;
   }
+  if($psw==$psw_repeat){
+    $counter=$counter+0;
+  }
+  else{
+    $counter=$counter+1;
+    $psw_not_match="Password not match";
+
+  }
   
 
-  if($counter == 0 & signupJobseeker($uname,$psw,$firstname,$lastname,$fatherName,$motherName,$email,$maratialStatus,$gender,$dob) ==1 ) {
+  if($counter == 0 && signupJobseeker($uname,$psw,$firstname,$lastname,$fatherName,$motherName,$email,$maratialStatus,$gender,$dob) ==1 ) {
     $signup_status = "Sign Up Successful";
   }
   else {
@@ -105,7 +113,7 @@ function test_input($data) {
 <div style="display:inline-block;">
     <?php include '../view/header.php' ?>
   </div>
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit="return validation()">
   <div>
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
@@ -113,24 +121,27 @@ function test_input($data) {
 
     <div>
       <label for="firstname"><b>First Name</b></label>
-      <input type="text" placeholder="Enter your firstname" name="firstname">
+      <input type="text" placeholder="Enter your firstname" name="firstname" id="firstname">
       <span><?php echo $firstnameErr;?></span>
+      <p id="firstnameErr"></p>
     </div>
 
     <br />
 
     <div>
       <label for="lastname"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter your lastname" name="lastname">
+      <input type="text" placeholder="Enter your lastname" name="lastname" id="lastname">
       <span><?php echo $lastnameErr;?></span>
+       <p id="lastnameErr"></p>
     </div>
 
     <br />
 
     <div>
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email">
+      <input type="text" placeholder="Enter Email" name="email" id="email">
       <span><?php echo $emailErr;?></span>
+      <p id="emailErr"></p>
     </div>
 
     <br />
@@ -138,22 +149,29 @@ function test_input($data) {
     <div>
       <label for="username"><b>Username</b></label>
       <input type="text" name="username" id="username" placeholder="Enter an username">
+      <span><?php echo $unameErr;?></span>
+      <p id="usernameErr"></p>
     </div>
 
     <br/>
 
     <div>
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw">
+      <input type="password" placeholder="Enter Password" name="psw" id="psw">
       <span><?php echo $pswErr;?></span>
+      <p id="pswErr"></p>
     </div>
 
     <br />
     
     <div>
       <label for="psw_repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw_repeat">
-      <span><?php echo $psw_repeatErr;?></span>
+      <input type="password" placeholder="Repeat Password" name="psw_repeat" id="psw_repeat">
+      <span><?php echo $psw_repeatErr;
+          echo "\n";
+          echo $psw_not_match;
+      ?></span>
+       <p id="psw_repeatErr"></p>
     </div>
 
     <br/>
@@ -192,6 +210,9 @@ function test_input($data) {
     </div>
   </div>
 </form>
+
+<script type="text/javascript" src="/Final/Project/data/js/signup_validation.js"></script>
+
 
 <br />
 

@@ -30,11 +30,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
    <div>
     <h1>Login</h1>
    <br />
-   <form action = "/final/project/controller/action_login.php" method = "POST">
+   <form action = "/final/project/controller/action_login.php" method = "POST" onsubmit="return validation()">
       <div>
          <label for="username"><b>Username</b></label>
          <input type="text" name="username" id="username" required />
          <span><?php echo $usernameError;?></span>
+         <a id="usernameErr"></a>
 
       </div>
       <br /><br />
@@ -42,6 +43,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
          <label for="password"><b>Password</b></label>
          <input type="password" name="password" id="password" required />
          <span><?php echo $passwordError;?></span>
+         <a id="pswErr"></a>
       </div>
       <br /><br />
       <div>
@@ -50,6 +52,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
          <input type="submit" value=" Login"/>
       </div>
    </form>
+
+<script type="text/javascript" src="/Final/Project/data/js/login_validation.js"></script>
+
 </div>
     <div>
     <?php include 'footer.php' ?>
