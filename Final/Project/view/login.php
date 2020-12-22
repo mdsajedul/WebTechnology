@@ -30,23 +30,23 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
    <div>
     <h1>Login</h1>
    <br />
-   <form action = "/project/controller/action_login.php" method = "POST">
+   <form action = "/final/project/controller/action_login.php" method = "POST">
       <div>
          <label for="username"><b>Username</b></label>
-         <input type="text" name="username" required="" />
+         <input type="text" name="username" id="username" required />
          <span><?php echo $usernameError;?></span>
 
       </div>
       <br /><br />
       <div>
-         <label for="psw"><b>Password</b></label>
-         <input type="password" name="psw" required />
+         <label for="password"><b>Password</b></label>
+         <input type="password" name="password" id="password" required />
          <span><?php echo $passwordError;?></span>
       </div>
       <br /><br />
       <div>
-         <button type="button" onClick="document.location.href='/Project'">Cancel</button>
-         <button type="button" onClick="document.location.href='/Project/view/signup.php'">Sign Up</button>
+         <button type="button" onClick="document.location.href='/final/Project'">Cancel</button>
+         <button type="button" onClick="document.location.href='/final/Project/view/signup.php'">Sign Up</button>
          <input type="submit" value=" Login"/>
       </div>
    </form>

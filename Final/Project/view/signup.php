@@ -10,7 +10,7 @@
 		<?php include 'header.php' ?>
 	</div>
 
-	<form action="/Project/controller/action_signup.php" method="POST">
+	<form action="/Final/Project/controller/action_signup.php" method="POST">
 		<div>
 			<h1>Sign Up </h1>
 			<p> Please fill in this form to create an account .</p>
@@ -36,6 +36,12 @@
     </div>
 
     <br />
+
+    <div>
+      <label for="username"><b>Username</b></label>
+      <input type="text" name="username" id="username" placeholder="Enter an username">
+    </div>
+    <br/>
 
     <div>
       <label for="psw"><b>Password</b></label>
@@ -78,8 +84,8 @@
       </div>
       <br/><br/>
     <div>
-      <button type="button" onClick="document.location.href='/project'">Cancel</button>
-      <button type="button" onClick="document.location.href='/project/view/login.php'">Login</button>
+      <button type="button" onClick="document.location.href='/Final/project'">Cancel</button>
+      <button type="button" onClick="document.location.href='/Final/project/view/login.php'">Login</button>
       <button type="submit">Create Account</button>
     </div>
   </div>

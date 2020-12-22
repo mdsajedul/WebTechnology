@@ -8,8 +8,10 @@
 
 <?php
 
-$firstname = $lastname = $email = $psw = $psw_repeat = $gender = $skill =  "";
-$firstnameErr = $lastnameErr = $emailErr = $pswErr = $psw_repeatErr= $skillErr= $genderErr = "";
+require("../model/model_jobseeker.php");
+
+$firstname = $lastname=$fatherName=$motherName=$maratialStatus=$dob = $email=$uname = $psw = $psw_repeat = $gender = $skill =  "";
+$firstnameErr = $lastnameErr = $emailErr=$unameErr = $pswErr = $psw_repeatErr= $skillErr= $genderErr = "";
 $signup_status = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -36,6 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   else {
     $emailErr = "Invalid Email";
     $counter = $counter + 1;
+  }
+
+  if(isset($_POST["username"]) & !empty($_POST["username"])){
+    $uname=test_input($_POST["username"]);
+  }
+  else{
+    $unameErr="Invalid Username";
+    $counter=$counter+1;
   }
 
   if (isset($_POST["psw"]) & !empty($_POST["psw"])) {
@@ -71,13 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   
 
-  if($counter == 0) {
+  if($counter == 0 & signupJobseeker($uname,$psw,$firstname,$lastname,$fatherName,$motherName,$email,$maratialStatus,$gender,$dob) ==1 ) {
     $signup_status = "Sign Up Successful";
-
-    $user = fopen("../data/users.txt", "w") or die("Unable to open file!");
-    fwrite($user, $firstname. "," . $lastname. ",". $email. ",". $psw.",".$gender. ",".$skill);
-    fwrite($user, "\n");
-    fclose($user);
   }
   else {
     $signup_status = "Sign Up Failed";
@@ -131,6 +136,13 @@ function test_input($data) {
     <br />
 
     <div>
+      <label for="username"><b>Username</b></label>
+      <input type="text" name="username" id="username" placeholder="Enter an username">
+    </div>
+
+    <br/>
+
+    <div>
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw">
       <span><?php echo $pswErr;?></span>
@@ -174,8 +186,8 @@ function test_input($data) {
       <br/><br/>
 
     <div>
-      <button type="button" onClick="document.location.href='/project'">Cancel</button>
-      <button type="button" onClick="document.location.href='/project/view/login.php'">Login</button>
+      <button type="button" onClick="document.location.href='/final/project'">Cancel</button>
+      <button type="button" onClick="document.location.href='/final/project/view/login.php'">Login</button>
       <button type="submit">Submit</button>
     </div>
   </div>
