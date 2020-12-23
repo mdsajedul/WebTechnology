@@ -1,9 +1,21 @@
 <?php
+session_start();
 
 $serverName="localhost";
 $username="root";
 $password="";
 $dbname="findyourjob";
+$firstname;
+$lastname;
+$fathername;
+$mothername;
+$dob;
+$maratialStatus;
+$email;
+$password;
+$gender;
+$uname;
+$religion;
 
 $conn =new mysqli($serverName,$username,$password,$dbname);
 
@@ -35,6 +47,49 @@ function signupJobseeker($uname,$psw,$firstname,$lastname,$fatherName,$motherNam
 	   return 1;
 
 
+}
+
+function detailsView($uname){
+	global $conn;
+	global $firstname,$lastname,$fathername,$mothername,$email,$maratialStatus,$religion,$gender,$dob,$uname,$password;
+	$sql="SELECT * from jobseeker where username='$uname' ";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+ 		 while($row = $result->fetch_assoc()) {
+ 		 	$uname=$row["username"];
+ 		 	$password=$row["password"];
+ 		 	$firstname=$row["firstname"];
+ 		 	$lastname=$row["lastname"];
+ 		 	$fathername=$row["fathername"];
+ 		 	$mothername=$row["mothername"];
+ 		 	$email=$row["email"];
+ 		 	$maratialStatus=$row["maratialstatus"];
+ 		 	$religion=$row["religion"];
+ 		 	$gender=$row["gender"];
+ 		 	$dob=$row["dob"];
+ 	 	}
+	}
+
+ 	else {
+  		echo "0 results";
+	}
+
+}
+
+
+function updateProfile($uname,$firstname,$lastname,$email,$fathername,$mothername,$gender,$skill,$dob,$religion,$marital,$divition,$district,$subDistrict,$postOffice,$road){
+
+	global $conn;
+	 $sql ="UPDATE `jobseeker` SET `firstname`='$firstname',`lastname`='$lastname',`fathername`='$fathername',`mothername`='$mothername',`email`='$email',`maratialstatus`='$marital',`skill`='$skill',`religion`='$religion',`gender`='$gender',`dob`='$dob',`division`='$divition',`preDistrict`='$district',`preSubDistrict`='$subDistrict',`prePostOffice`='$postOffice',`preRoad`='$road' WHERE `username`='$uname' " ;
+
+	if ($conn->query($sql) == TRUE) {
+  		return 1;
+
+	}
+	 else {
+ 	return 0;
+	}
 }
 
 ?>

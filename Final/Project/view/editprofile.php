@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,38 +13,39 @@
 
 
 
-<form  action="/Project/controller/action_editprofile.php" method="POST">
+<form  action="/Final/Project/controller/action_editprofile.php" method="POST">
 <div class=profile>
+  <?php require("../controller/action_view_jobseeker.php") ;?>
   <h1>Edit Resume </h1>
     <p>Please fill in this form to update Resume.</p>
     <br />
 <div>	
 <label for="fname">First Name</label>
-<input type="text" name="firstname" placeholder ="First name">
+<input type="text" name="firstname" value="<?php echo $firstname; ?>">
 <br/><br/>
 </div>
 
 <div>
 <label for="lname">Last Name</label>
-<input type="text" name="lastname" placeholder="Last name">
+<input type="text" name="lastname" value="<?php echo $lastname; ?>">
  <br/><br/>
 </div>
 
 <div>
 <label for="fdname">Father name</label>
-<input type="text" name="fdname" placeholder ="Father name">
+<input type="text" name="fathername" value="<?php echo $fathername; ?>">
 <br/><br/>
 </div>
 
 <div>
 <label for="mdname" >Mother name</label>
-<input type="text" name="mdname" placeholder ="Mother name">
+<input type="text" name="mothername" value="<?php echo $mothername; ?>">
 <br/><br/>
 </div>
 
 <div>
 <label for="dob" >Date of Birth</label>
-<input type="text" name="dob" placeholder ="DD/MM/YY">
+<input type="text" name="dob" value="<?php echo $dob; ?>">
  <br/><br/>
 </div>
 
@@ -59,7 +62,7 @@
 
 <div>
 <label for ="religion" >Religion</label>
-<input type="text" name="religion" placeholder  = "Religion">
+<input type="text" name="religion" value="<?php echo $religion; ?>">
  <br/><br/>
 </div>
 
@@ -73,22 +76,12 @@
 
 <div>
 <label for="email">Email</label>
-<input type="text" name="email" placeholder ="Enter your email">
+<input type="text" name="email" value="<?php echo $email; ?>">
  <br/><br/>
 </div>
 
-
- <div>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw">
-    </div>
-
     <br />
     
-    <div>
-      <label for="psw_repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw_repeat">
-    </div>
 
     <br /><br/>
 
@@ -107,16 +100,56 @@
 
         </select>
       </div>
+
+
 <br/><br/>
+
+<div class="Address">
+  <label><b>Select Address</b></label><br/><br/>
+
+  Divition: <select name="divition" id="divition">
+    <option value="" selected="selected">Select Divition</option>
+  </select>
+  <br><br>
+District: <select name="district" id="district">
+    <option value="" selected="selected">Please select District first</option>
+  </select>
+  <br><br>
+Sub District: <select name="subDistrict" id="subDistrict">
+    <option value="" selected="selected">Please select Sub District first</option>
+  </select>
+  <br><br>
+</div>
+
+<div>
+  <label>Post Office</label>
+  <input type="text" name="postoffice">
+</div>
+
+<br/><br/>
+
+<div>
+  <label>Road</label>
+  <input type="text" name="road">
+</div>
+
+
+<br/>
 
 <div>
 	<button type="button" onClick="document.location.href='/project/view/profile.php'">Cancel</button>
     <button type="submit">Submit</button>
 </div>
+
+
 <br/><br/>
 
 </div>
 </form>
+
+<script src="/Final/Project/data/js/districtWithSubDistrict.js">
+
+</script>
 
 <div>
 	<?php include 'footer.php' ?>

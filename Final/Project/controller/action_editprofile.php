@@ -9,8 +9,12 @@
 
 <?php
 
-$firstname = $lastname = $email = $psw = $psw_repeat = $gender = $skill = $fdname=$mdname=$dob=$religion=$marital= "";
-$firstnameErr = $lastnameErr = $emailErr = $pswErr = $psw_repeatErr= $skillErr= $genderErr =$fdnameErr=$mdnameErr=$dobErr=$religionErr= "";
+require("../model/model_jobseeker.php");
+
+$uname=$_SESSION["id"];
+
+$firstname = $lastname = $email = $gender = $skill = $fathername=$mothername=$dob=$religion=$marital=$divition=$district=$subDistrict=$postOffice=$road= "";
+$firstnameErr = $lastnameErr = $emailErr = $skillErr= $genderErr =$fdnameErr=$mdnameErr=$dobErr=$religionErr= "";
 $signup_status = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -39,22 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $counter = $counter + 1;
   }
 
-  if (isset($_POST["psw"]) & !empty($_POST["psw"])) {
-    $psw = test_input($_POST["psw"]);
-  }
-  else {
-    $pswErr = "Invalid Password";
-    $counter = $counter + 1;
-  }
-
-  if (isset($_POST["psw_repeat"]) & !empty($_POST["psw_repeat"])) {
-    $psw_repeat = test_input($_POST["psw_repeat"]);
-  }
-  else {
-    $psw_repeatErr = "Invalid Password Repeat";
-    $counter = $counter + 1;
-  }
-
   if(isset($_POST["gender"]) & !empty($_POST["gender"])){
     $gender=test_input($_POST["gender"]);
   }
@@ -71,8 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $counter=$counter+1;
   }
 
-  if(isset($_POST["fdname"]) & !empty($_POST["fdname"])){
-  	$fdname=test_input($_POST["fdname"]);
+  if(isset($_POST["fathername"]) & !empty($_POST["fathername"])){
+  	$fathername=test_input($_POST["fathername"]);
   }
   else
   {
@@ -80,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   	$counter=$counter+1;
   }
 
-  if(isset($_POST["mdname"]) & !empty($_POST["mdname"])){
-  	$mdname=test_input($_POST["mdname"]);
+  if(isset($_POST["mothername"]) & !empty($_POST["mothername"])){
+  	$mothername=test_input($_POST["mothername"]);
   }
   else{
   	$mdnameErr="Invalid Mother name";
@@ -107,15 +95,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   	$marital=test_input($_POST["marital"]);
   }
 
-  
+  if(isset($_POST["divition"]) & !empty($_POST["divition"])){
+    $divition=test_input($_POST["divition"]);
+  }
+  else{
+    $counter=$counter+1;
+  }
 
-  if($counter == 0) {
+
+if(isset($_POST["district"]) & !empty($_POST["district"])){
+    $district=test_input($_POST["district"]);
+  }
+  else{
+    $counter=$counter+1;
+  }
+
+if(isset($_POST["subDistrict"]) & !empty($_POST["subDistrict"])){
+    $subDistrict=test_input($_POST["subDistrict"]);
+  }
+  else{
+    $counter=$counter+1;
+  }
+
+  if(isset($_POST["postoffice"]) & !empty($_POST["postoffice"])){
+    $postOffice=test_input($_POST["postoffice"]);
+  }
+  else{
+    $counter=$counter+1;
+  }
+
+  if(isset($_POST["road"]) & !empty($_POST["road"])){
+    $road=test_input($_POST["road"]);
+  }
+  else{
+    $counter=$counter+1;
+  }
+
+
+$newValue=updateProfile($uname,$firstname,$lastname,$email,$fathername,$mothername,$gender,$skill,$dob,$religion,$marital,$divition,$district,$subDistrict,$postOffice,$road);
+
+
+  if($counter == 0 && $newValue==1 ) {
     $signup_status = "Update Resume Successfully";
-
-    $user = fopen("../data/users.txt", "w") or die("Unable to open file!");
-    fwrite($user, $firstname. "," . $lastname. ",". $email. ",". $psw.",".$gender. ",".$skill.",".$fdname.",".$mdname.",".$dob.",".$religion.",".$marital);
-    fwrite($user, "\n");
-    fclose($user);
   }
   else {
     $signup_status = "Resume update failed";
@@ -171,19 +192,6 @@ function test_input($data) {
 
     <br />
 
-    <div>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw">
-      <span><?php echo $pswErr;?></span>
-    </div>
-
-    <br />
-    
-    <div>
-      <label for="psw_repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw_repeat">
-      <span><?php echo $psw_repeatErr;?></span>
-    </div>
 
     <br/>
 
@@ -252,6 +260,40 @@ function test_input($data) {
       </div>
       <br/><br/>
 
+
+      <div class="Address">
+  <label><b>Select Address</b></label><br/><br/>
+
+  Divition: <select name="divition" id="divition">
+    <option value="" selected="selected">Select Divition</option>
+  </select>
+  <br><br>
+District: <select name="district" id="district">
+    <option value="" selected="selected">Please select District first</option>
+  </select>
+  <br><br>
+Sub District: <select name="subDistrict" id="subDistrict">
+    <option value="" selected="selected">Please select Sub District first</option>
+  </select>
+  <br><br>
+</div>
+
+<div>
+  <label>Post Office</label>
+  <input type="text" name="postoffice">
+</div>
+
+<br/><br/>
+
+<div>
+  <label>Road</label>
+  <input type="text" name="road">
+</div>
+
+<br/>
+
+
+
     <div>
       <button type="button" onClick="document.location.href='/project'">Cancel</button>
       <button type="button" onClick="document.location.href='/project/view/login.php'">Login</button>
@@ -265,6 +307,10 @@ function test_input($data) {
 <?php 
   echo $signup_status;
 ?>
+
+
+<script src="/Final/Project/data/js/districtWithSubDistrict.js"></script>
+
 
  <div>
     <?php include '../view/footer.php' ?>
