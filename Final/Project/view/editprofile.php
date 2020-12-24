@@ -152,7 +152,7 @@ Sub District: <select name="subDistrict" id="subDistrict">
 </div>
 
 <div class="rightProfile">
-    <input type='file' name="uploadfile">
+    <input type='file' name="file">
 </div>
 
 </form>

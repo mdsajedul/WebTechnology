@@ -136,8 +136,24 @@ if(isset($_POST["subDistrict"]) & !empty($_POST["subDistrict"])){
     $counter=$counter+1;
   }
 
-  if(isset($_FILES["uploadfile"]) & !empty($_FILES["uploadfile"])){
-    $filename= $_FILES["uploadfile"];
+  if(isset($_POST["submit"])){
+
+    $files= $_FILES["file"];
+
+    $filename=$files['name'];
+    $fileerror=$files['error'];
+    $filetmp=$files['tmp_name'];
+
+    $fileext=explode('.',$filename);
+    $filecheck=strtolower(end($fileext));
+
+    $fileextstored=array('png','jpg','jpeg');
+
+    if(in_array($filecheck,$fileextstored)){
+      $destinationfile='../data/profileimage/'.$filename;
+      move_uploaded_file($filetmp,$destinationfile);
+    }
+
   }
   else{
     $filenameErr="Invalid file";
@@ -149,7 +165,7 @@ if(isset($_POST["subDistrict"]) & !empty($_POST["subDistrict"])){
 
 
 
-  if($counter == 0 && updateProfile($uname,$firstname,$lastname,$email,$fathername,$mothername,$gender,$skill,$dob,$religion,$marital,$divition,$district,$subDistrict,$postOffice,$road)==1 ) {
+  if($counter == 0 && updateProfile($uname,$firstname,$lastname,$email,$fathername,$mothername,$gender,$skill,$dob,$religion,$marital,$divition,$district,$subDistrict,$postOffice,$road,$destinationfile)==1 ) {
     $signup_status = "Update Resume Successfully";
   }
   else {
@@ -176,7 +192,7 @@ function test_input($data) {
 <div style="display:inline-block;">
     <?php include '../view/header.php' ?>
   </div>
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data" >
   <div  class="leftProfile">
       
     <h1>Edit Resume </h1>
@@ -253,9 +269,9 @@ function test_input($data) {
 
 	<div>
 		<label for="marital" >Marital Status</label> <br/>
-		<input type="radio" id="unmarried" name="marital" value="Unmarried" <?php if($maratialStatus=="Unmarried") echo 'checked="checked"'; ?>>Unmarried
+		<input type="radio" id="unmarried" name="marital" value="Unmarried" checked="">Unmarried
 		<br/>
-	<input type="radio" id="married" name="marital" value="Married" <?php if($maratialStatus=="Married") echo 'checked="checked"'; ?>>Married
+	<input type="radio" id="married" name="marital" value="Married" >Married
  		<br/><br/>
 		</div>
     	  <div>
@@ -322,7 +338,7 @@ Sub District: <select name="subDistrict" id="subDistrict">
 
 
 <div class="rightProfile">
-    <input type='file' name="uploadfile">
+    <input type='file' name="file">
 </div>
 
 

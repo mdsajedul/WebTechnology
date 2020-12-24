@@ -28,7 +28,7 @@
 				</div>
 
 				<div class="image">
-				<img src="pic.jpg" alt="Italian Trulli" height="130px" width="130px">
+				<img src="<?php echo $proImage; ?>"  height="130px" width="130px">
 			   </div>
 
 			</div>
