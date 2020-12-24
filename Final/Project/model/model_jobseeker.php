@@ -16,6 +16,12 @@ $password;
 $gender;
 $uname;
 $religion;
+$skill;
+$divition;
+$district;
+$subDistrict;
+$postOffice;
+$road;
 
 $conn =new mysqli($serverName,$username,$password,$dbname);
 
@@ -51,7 +57,7 @@ function signupJobseeker($uname,$psw,$firstname,$lastname,$fatherName,$motherNam
 
 function detailsView($uname){
 	global $conn;
-	global $firstname,$lastname,$fathername,$mothername,$email,$maratialStatus,$religion,$gender,$dob,$uname,$password;
+	global $firstname,$lastname,$fathername,$mothername,$email,$maratialStatus,$religion,$gender,$dob,$uname,$password,$skill,$divition,$district,$subDistrict,$postOffice,$road;
 	$sql="SELECT * from jobseeker where username='$uname' ";
 	$result = $conn->query($sql);
 
@@ -65,9 +71,18 @@ function detailsView($uname){
  		 	$mothername=$row["mothername"];
  		 	$email=$row["email"];
  		 	$maratialStatus=$row["maratialstatus"];
+ 		 	$skill=$row["skill"];
  		 	$religion=$row["religion"];
  		 	$gender=$row["gender"];
  		 	$dob=$row["dob"];
+ 		 	$divition=$row["division"];
+ 		 	$district=$row["preDistrict"];
+ 		 	$subDistrict=$row["preSubDistrict"];
+ 		 	$postOffice=$row["prePostOffice"];
+ 		 	$road=$row["preRoad"];
+
+ 		 	
+
  	 	}
 	}
 

@@ -1,86 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Profile</title>
+	<title>Resume</title>
+	<link rel="stylesheet" href="/final/project/data/css/cv_css.css">
 </head>
 <body>
+ <?php require("../controller/action_view_jobseeker.php") ;?>
+	<div class="cvHeader">
+		<div class="containerText">
+			<h3>View Resume</h1>
+		</div>
+	</div>
 
-<div>
-	<?php include 'header.php' ?>
-</div>
-<div>
-	<a href="editprofile.php">Edit Profile</a><br/><br/>
-</div>
-<form>
-<div class=profile>
-<div>
-<label for="fname">First Name</label>
-<input type="text" name="fname" placeholder value="Sajedul">
-</div>
-<div>
-<br/><br/>
-<label for="lname">Last Name</label>
-<input type="text" name="lname" placeholder="Islam">
- <br/><br/>
-</div>
+	<div class="cvNotice">
+		<div class="cvNoticeContainer">
+			<p>Here you will get a detailed view of your resume</p>
+		</div>
+	</div>
 
-<div>
-<label for="fdname">Father name</label>
-<input type="text" name="fname" placeholder value="">
-<br/><br/>
-</div>
+	<div class="cvBody">
+		<div class="cvContainer">
+			<div class="cvHeadInfo">
+				<div class="leftHead">
+					<h2><?php echo $firstname." ".$lastname ; ?></h2>
+				<small>Address : <?php echo $road.",".$subDistrict.",".$district; ?></small> <br/>
+				<small>e-mail: <?php echo $email; ?></small>
+				</div>
 
-<div>
-<label for="mdname" >Mother name</label>
-<input type="text" name="mdname" placeholder value="">
-<br/><br/>
-</div>
+				<div class="image">
+				<img src="pic.jpg" alt="Italian Trulli" height="130px" width="130px">
+			   </div>
 
-<div>
-<label for="dob" >Date of Birth</label>
-<input type="text" name="dob" placeholder value="">
- <br/><br/>
-</div>
+			</div>
 
- <div>
-<label for="gender">Gender</label>
-<input type="text" name="gender" placeholder value="">
- <br/><br/>
-</div>
+			
 
- <div>
-<label for ="religion" >Religion</label>
-<input type="text" name="religion" placeholder value = "">
- <br/><br/>
-</div>
+			<div class="carrerInfo">
+				<h3>Career and Application Information:</h3>
+				<p>Preferred Job Category :<?php echo $skill; ?></p>
+			</div>
 
- <div>
-<label for="marital" >Marital Status</label>
-<input type="text" name="marital" placeholder value="">
- <br/><br/>
-</div>
+			<div class="personalInfo">
+				<h3>Personal Details:</h3>
+				<p>Father Name: <?php echo $fathername; ?></p>
+				<p>Mother Name: <?php echo $mothername; ?></p>
+				<p>Date of Birth: <?php echo $dob; ?> </p>
+				<p>Gender: <?php echo $gender; ?></p>
+				<p>Marital Status : <?php echo $maratialStatus; ?> </p>
+				<p>Religion: <?php echo $religion; ?></p>
+				<p>Address: <?php echo $road.",".$subDistrict.",".$district. ",".$divition; ?></p>
 
- <div>
-<label for="email">Email</label>
-<input type="text" name="email" placeholder value="">
- <br/><br/>
-</div>
-
-<div>
-	 
-	 <label for="skills" >Skill</label>
-	<input type="text" name="skills" placeholder value="">	
-
-</div>
-  <br/><br/>
-
-</div>
-</form>
-
-
-<div>
-	<?php include 'footer.php' ?>
-</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

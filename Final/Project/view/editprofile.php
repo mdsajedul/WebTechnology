@@ -13,8 +13,8 @@
 
 
 
-<form  action="/Final/Project/controller/action_editprofile.php" method="POST">
-<div class=profile>
+<form  action="/Final/Project/controller/action_editprofile.php" method="POST" enctype="multipart/form-data">
+<div class=leftProfile>
   <?php require("../controller/action_view_jobseeker.php") ;?>
   <h1>Edit Resume </h1>
     <p>Please fill in this form to update Resume.</p>
@@ -45,18 +45,19 @@
 
 <div>
 <label for="dob" >Date of Birth</label>
-<input type="text" name="dob" value="<?php echo $dob; ?>">
+<input type="date" name="dob" value="<?php echo $dob; ?>">
+
  <br/><br/>
 </div>
 
 <div>
       <label for="gender"><b>Select Gender </b> </label>
       <br>
-      <input type="radio" id="male"  name="gender" value="Male" checked>Male
+      <input type="radio" id="male"  name="gender" value="Male" <?php if($gender=="Male") echo 'checked="checked"'; ?>>Male
       <br/>
-      <input type="radio" id="female" name="gender" value="Female">Female
+      <input type="radio" id="female" name="gender" value="Female" <?php if($gender=="Female") echo 'checked="checked"'; ?>>Female
       <br/>
-      <input type="radio" id=other name="gender" value="Other">Other
+      <input type="radio" id=other name="gender" value="Other" <?php if($gender=="Other") echo 'checked="checked"'; ?>>Other
       <br/><br/>
 </div>
 
@@ -68,9 +69,9 @@
 
 <div>
 <label for="marital" >Marital Status</label> <br/>
-<input type="radio" id="unmarried" name="marital" value="Unmarried" checked>Unmarried
+<input type="radio" id="unmarried" name="marital" value="Unmarried" <?php if($maratialStatus=="Unmarried") echo 'checked="checked"'; ?>>Unmarried
 <br/>
-<input type="radio" id="married" name="marital" value="Married">Married
+<input type="radio" id="married" name="marital" value="Married"  <?php if($maratialStatus=="Married") echo 'checked="checked"'; ?>>Married
  <br/><br/>
 </div>
 
@@ -87,8 +88,9 @@
 
 <div>
         <label for="skills"><b>Select your skill from following list</b></label><br/>
-        <select name="skills" value="0">
-          <option value="Accounting">Accounting/Finance</option>
+        <select name="skills" value="">
+          <option name="Accounting"><?php echo $skill; ?></option>
+          <option name="Accounting">Accounting/Finance</option>
           <option name="bank">Bank /Non Bank Fin.Institution </option>
           <option name="education">Education/Training </option>
           <option name="engineer">Engineer/Architect </option>
@@ -108,44 +110,53 @@
   <label><b>Select Address</b></label><br/><br/>
 
   Divition: <select name="divition" id="divition">
-    <option value="" selected="selected">Select Divition</option>
+    <option value="" selected="selected"><?php echo $divition; ?></option>
   </select>
   <br><br>
 District: <select name="district" id="district">
-    <option value="" selected="selected">Please select District first</option>
+    <option value="" selected="selected"><?php echo $district; ?></option>
   </select>
   <br><br>
 Sub District: <select name="subDistrict" id="subDistrict">
-    <option value="" selected="selected">Please select Sub District first</option>
+    <option value="" selected="selected"><?php echo $subDistrict; ?></option>
   </select>
   <br><br>
 </div>
 
 <div>
   <label>Post Office</label>
-  <input type="text" name="postoffice">
+  <input type="text" value="<?php echo $postOffice; ?>" name="postoffice">
 </div>
-
-<br/><br/>
-
-<div>
-  <label>Road</label>
-  <input type="text" name="road">
-</div>
-
 
 <br/>
 
 <div>
-	<button type="button" onClick="document.location.href='/project/view/profile.php'">Cancel</button>
-    <button type="submit">Submit</button>
+  <label>Road</label>
+  <input type="text" value="<?php echo $road; ?>" name="road">
+</div>
+
+
+<br/> <br/>
+
+
+
+<div>
+	<button type="button" onClick="document.location.href='/final/project/view/jhome.php'">Cancel</button>
+    <button type="submit" name="submit">Submit</button>
 </div>
 
 
 <br/><br/>
 
+
 </div>
+
+<div class="rightProfile">
+    <input type='file' name="uploadfile">
+</div>
+
 </form>
+
 
 <script src="/Final/Project/data/js/districtWithSubDistrict.js">
 
