@@ -4,17 +4,18 @@
 <html>
 <head>
 	<title>My Profile</title>
+  <link rel="stylesheet" type="text/css" href="/final/project/data/css/editprofile.css">
 </head>
 <body>
 
-<div>
+<div class='header'>
 	<?php include 'header.php' ?>
 </div>
 
-
+<div class="form_part">
 
 <form  action="/Final/Project/controller/action_editprofile.php" method="POST" enctype="multipart/form-data">
-<div class=leftProfile>
+<div class="leftProfile">
   <?php require("../controller/action_view_jobseeker.php") ;?>
   <h1>Edit Resume </h1>
     <p>Please fill in this form to update Resume.</p>
@@ -157,6 +158,7 @@ Sub District: <select name="subDistrict" id="subDistrict">
 
 </form>
 
+</div>
 
 <script src="/Final/Project/data/js/districtWithSubDistrict.js">
 

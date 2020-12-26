@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+body{
+	font-family: all;
+	margin: 0;
+}
+
+
+.form_part{
+	margin: 20px;
+}
+
+.leftProfile{
+	float: left;
+  width: 60%;
+}
+
+.rightProfile{
+	float=left;
+	width: 40%;
+	
+
+}

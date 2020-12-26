@@ -37,7 +37,7 @@
 
 			<div class="carrerInfo">
 				<h3>Career and Application Information:</h3>
-				<p>Preferred Job Category :<?php echo $skill; ?></p>
+				<p>Preferred Job Category :<?php echo  $skill; ?></p>
 			</div>
 
 			<div class="personalInfo">

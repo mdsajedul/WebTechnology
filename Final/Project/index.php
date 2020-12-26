@@ -4,89 +4,13 @@
 <head>
 	<title>Find your job</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<style>
-		*{
-			box-sizing: border-box;
-		}
-		body{
-			margin: 0;
-			font-family: Arial;
-			padding: 10px;
+	<link rel="stylesheet" type="text/css" href="/final/project/data/css/index.css">
 
-		}
-		.card{
-			padding: 20px;
-			margin-top: 20px;
-		}
-		.card a{
-			padding: 14px 16px;
-		}
-		.header{
-			width: auto;
-			padding: 30px;
-			text-align: right;
-
-		}
-		.header h1{
-			font-size: 50px;
-		}
-		.topnav{
-			overflow: hidden;
-		}
-		.topnav a {
-			float: left;
-			display: block;
-			text-align: center;
-			padding: 14px 16px;
-			text-decoration: none;
-		}
-		.leftcolumn{
-			float: left;
-			width: 75%;
-			padding-left: 20px;
-		}
-		.rightcolumn {
-  			float: left;
- 			width: 25%;
- 			padding-left: 20px;
-		}
-		.row:after{
-			content: "";
-			display: table;
-			clear: both;
-		}
-
-	</style>
 </head>
 <body>
  
-<!--
-	<?php
-	$usernameError="";
-	$passwordError="";
-	
-	$error="";
-	$success="";
 
-
-	if($_SERVER["REQUEST_METHOD"]=="POST")
-	{
-		if(empty($_REQUEST["username"])){
-			$usernameError="Username is required";
-		}
-		elseif (empty($_REQUEST["password"])) {
-			$passwordError="Password is required";
-		}
-	}
-
-	
-
-	
-	?>
-
---->
-
-<div style="display:inline-block;">
+<div>
     <?php include 'view/header.php' ?>
   </div>
 
@@ -103,10 +27,11 @@
 <div class="row">
 
 <div class="leftcolumn">
-	<div class="card">
-
 
 		<div class="noticeboard">
+			<div class="card">
+				
+			
 			<h2 style="text-align:center;">Noticeboard</h2>
 			<p>We want to remind to all that public health officials state that the risk of contracting the virus is low at this time. However, to help you protect yourself from possible infection, Health officials recommend you:
 
@@ -120,27 +45,33 @@ Avoid touching your eyes, nose or mouth
 	<br/>
 	<br/>
 		</div>
+			</div>
 
 
 
 		<div class="jobindex">
+			<div class="card">
 			<?php include "view/jobs.php" ?>
+			</div>	
 		</div>
+
+
+
 	</div>
-</div>
+
+
 
 	<div class="rightcolumn">
-		<div class="card">
-			
 
-
-
-				</div>
 	</div>
 
 </div>
+
+
  <div>
     <?php include 'view/footer.php' ?>
   </div>	
+
+
 </body>
 </html>

@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+      margin:0;
+      font-family: Arial;
+      background-color: #B3BEC3;
+      padding: 10px;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color:#4b636d;  
+    
+      }
+
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      .topnav a:hover {
+        background-color:  #CCD3D7;
+        color: black;
+      }
+
+      .card{
+        background-color: #CCD3D7;
+         padding: 20px;
+        margin-top: 20px;
+        color:black;
+      }
+    .card a{
+        color: black;
+        padding: 14px 16px;
+         text-decoration: none;
+  }
