@@ -1,73 +1,87 @@
 <!DOCTYPE html>
 <?php 
 session_start();
+if ($_SESSION["id"]==null){
+	echo "<script> window.location.assign('login.php'); </script>";
+}
 ?>
 <html>
 <head>
 	<title>My Jobs</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/final/project/data/css/jhome_style.css">
+
 </head>
 <body>
-<div>
-<?php include 'header.php' ?>
-</div>
 
-<div class="topnav" style="overflow: hidden;">
-	<a style="float: left;display: block;text-align: center;padding: 14px 16px"; href="../index.php">Home</a>
-	<a style="float: left;display: block;text-align: center;padding: 14px 16px"; href="jobseeker.php">My Jobs</a>
-	<a href="../controller/action_logout.php" style="float: right;display: block;padding: 14px 16px;">Sign out</a>
+	<div class="header">
+		<?php include 'header.php' ?>
+	</div>
 
-</div>
+	<div class="topnav">
+		<a href="../index.php">Home</a>
+		<a href="jobseeker.php">My Jobs</a>
+		<a href="../controller/action_logout.php" style="float: right;">Sign out</a>
+	</div>
 
-<div>
-	<p> Welcome  <span><?php echo $_SESSION["id"] ?> </span></p>
-</div>
+	<div class="welcomenote">
+		<div class="card">
+			<p> Welcome  <span><?php echo $_SESSION["id"] ?> </span></p>
+		</div>
+	</div>
 
-<div class="noticeboard">
+
+	<div class="noticeboard">
+		<div class="card">
 			<h2 style="text-align:center;">Noticeboard</h2>
-			<p>We want to remind to all that public health officials state that the risk of contracting the virus is low at this time. However, to help you protect yourself from possible infection, Health officials recommend you:
-
-<br/>1.Wash your hands frequently and well with soap and water
-</br>1.Use alcohol-based hand sanitizer
-Avoid touching your eyes, nose or mouth
-</p>
-<p style="text-align: center;"> <i>Some company may be will take interview in online </i></p>
-</div>
+			<p>Notice whill bw here </p>
+			
+		</div>
+	</div>
 
 
-<div class="sunbav" >
-	<label><b>Resume</label></b> <br/><br/>
+	<div class="row">
 
-	<a href="profile.php" > View Resume </a> <br/><br/>
-	<a href="editprofile.php">Edit Resume</a> <br/><br/>
+		<div class="leftcolumn">
 
-	<a href="emailcv.php">Email Resume</a><br/><br>
+			<div class="card">
+				<div class="subnav">
+					
+					<label><b> Resume </b></label> <br/><br/>
+					<a href="profile.php" > View Resume </a> <br/><br/>
+					<a href="editprofile.php">Edit Resume</a> <br/><br/>
+					<a href="emailcv.php">Email Resume</a><br/><br>
+					<a href="jobs.php">View Jobs </a><br/><br/>
+					<label><b>Mailbox</b></label><br/> <br/>
+					<a href="getmail.php"> Message </a> <br/> <br/>
+					<a href="emailedcv.php">Emailed Ressume </a> <br/>
+					
+				</div>
 
-	<a href="jobs.php">View Jobs </a>	
-	<br/>
-	<br/>
-	<br/>
-</div>
+			</div>
 
-<div class="sunbav">
-	<label><b>Mailbox</b></label><br/> <br/>
-	<a href="getmail.php"> Message </a> <br/> <br/>
-	<a href="emailedcv.php">Emailed Ressume </a> <br/>
-</div>
+		</div>
 
-
-<br/>
-<br/>
-<br/>
+		<div class="rightcolumn">
+			<div class="card">
+				<div style="background-color: white;">
+					<?php include_once("../view/profile.php") ;?>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 
 
-<div>
+
+	<div class="card" style="text-align: center;">
 	<a style="text-align: center;">Facing any problem? Feel free to <a href="conwithteam.php">Contact with Us</a> </a>
-</div>
+	</div>
 
-<div>
+	<div>
 	<?php include 'footer.php' ?>
-</div>
+	</div>
+
 
 </body>
 </html>
