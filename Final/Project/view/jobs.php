@@ -23,11 +23,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 ?>
 
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/final/project/data/css/jobs_style.css">
+
+</head>
+
+<body>
+
+
 <div class="search">
-	<b>Find your right job</b><br/>
+	
 	<div class="searchform" >
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-			<input type="text" name="search" required>
+			<input type="text" name="search" placeholder="Search.." required>
 			
 			<select name="searchCategory" value="0">
 				<option value="organization">Organization</option>
@@ -35,6 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				<option value="skill" >Skill</option>
 				
 			</select>
+		
 			<button type="search">Search</button>
 		</form>
 		
@@ -46,10 +57,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	</div>
 </div>
 
-<div class="jobcategory">
+
+<div class="job_head">
+
+	<div class="jobcategory">
 	<br/>
-	<label for="jobcategoryname">Job Category</label>
-	<div class="jobcategoryname">
+	<label id="jobcategoryname" for="jobcategoryname">Job Category</label>
+	  <div class="jobcategoryname">
 		<select name="jobcategoryname" value="0">
 			<option value="accounting">Accounting/Finance</option>
 			<option value="production">Production/Operation</option>
@@ -61,18 +75,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<br/>
 		<br/><br/>
 	</div>
+   </div>
 
-	<div class="sortJobList" style="float: right;">
+<div class="sortJobList" style="float: right;">
 		<label for="sortJobList">Sort by</label>
 		<select name="sortJobList" value="0">
 			<option value="deadline">Deadline</option>
 			<option value="atoz">A to Z</option>
+			
 		</select>
 			
 		<br/>
-	</div>
+</div>
 
-	<div class="joblist">
+</div>
+
+<div class="joblist">
 
 		<p><a href="view/jobdetails/accountManager.php">Accounts Manager</a></p>
 		<p>Bridge Pharmaceuticals LTD </p>
@@ -88,6 +106,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<p>Experience: At least 10 years</p>
 
 
-	</div>
-
 </div>
+
+
+	
+</body>
+
+</html>

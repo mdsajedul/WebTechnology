@@ -1,24 +1,47 @@
 * {
   box-sizing: border-box;
 }
-body{
-	font-family: all;
-	margin: 0;
+
+body {
+    margin:0;
+    font-family: all;
+    background-color: #B3BEC3;
+    padding: 10px;
+  }
+  
+
+    .card{
+      background-color: #CCD3D7;
+       padding: 20px;
+      margin-top: 20px;
+      color:black;
+    }
+  .card a{
+      color: black;
+      padding: 14px 16px;
+       text-decoration: none;
 }
 
-
-.form_part{
-	margin: 20px;
+ .card a:hover {
+      background-color: #1a1a1a;
+         color: white;
 }
 
-.leftProfile{
-	float: left;
-  width: 60%;
-}
+  .leftProfile{
+    float: left;
+    width: 50%;
+  }
 
-.rightProfile{
-	float=left;
-	width: 40%;
-	
-
-}
+  .rightPart{
+    float: left;
+    width: 50%;
+    padding-left: 20px;
+  }
+  .row:after {
+   content: "";
+   display: table;
+   clear: both;
+  }
+  .footer{
+     text-align:center;
+  }

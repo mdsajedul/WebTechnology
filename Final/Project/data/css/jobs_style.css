@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .card{
+    background-color: #CCD3D7;
+     padding: 20px;
+    margin-top: 20px;
+    color:black;
+  }
+.card a{
+    color: black;
+    padding: 14px 16px;
+     text-decoration: none;
+}
+
+.search{
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+input[type=text] {
+    width: 300px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #F3F5F6;
+    background-image: url('/Final/Project/data/icon/search1.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 14px 8px 40px;
+  }
+
+  .searchform select{
+    width: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #F3F5F6;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 14px 8px 20px;
+  }
+
+  #jobcategoryname{
+      padding-bottom: 10px;
+  }
+
+
+ 
+
+  .jobcategoryname select{
+    width: auto;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #F3F5F6;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 14px 8px 20px;
+  }
+
+  .sortJobList select{
+    width: auto;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #F3F5F6;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 14px 8px 20px;
+  }
+
+  button[type=search]{
+    width: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color:white;
+    background-color: #546E7A;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 14px 8px 20px;
+  }
