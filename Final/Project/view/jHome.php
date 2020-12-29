@@ -33,8 +33,10 @@ if ($_SESSION["id"]==null){
 
 	<div class="noticeboard">
 		<div class="card">
+			 <?php require("../controller/action_view_noticeboard.php") ;?>
 			<h2 style="text-align:center;">Noticeboard</h2>
-			<p>Notice whill bw here </p>
+			<h3><?php echo $noticeHeader; ?></h3>
+			<p><?php echo $noticeBody ; ?></p>
 			
 		</div>
 	</div>
