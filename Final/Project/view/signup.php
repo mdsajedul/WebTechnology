@@ -3,13 +3,25 @@
 <head>
 	<title>SIgn Up</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="/final/project/data/css/form_style.css">
+    <link rel="stylesheet" type="text/css" href="/final/project/data/css/page_style.css">
+</head>
 </head>
 <body>
 
-	<div style="display: inline-block;">
+	<div>
 		<?php include 'header.php' ?>
 	</div>
 
+  <div class="topnav">
+    <a href="/final/project/index.php">Home</a>
+    <a href="jobseeker.php">My Jobs</a>
+    <a href="contact.php" >Contact with us</a>
+    <a href="signup.php" style="float: right;">Sign Up</a>
+    <a href="login.php" style="float: right;">Login</a>
+  </div>
+
+<div class="card">
 	<form action="/Final/Project/controller/action_signup.php" method="POST" onsubmit="return validation()">
 		<div>
 			<h1>Sign Up </h1>
@@ -92,11 +104,13 @@
     <div>
       <button type="button" onClick="document.location.href='/Final/project'">Cancel</button>
       <button type="button" onClick="document.location.href='/Final/project/view/login.php'">Login</button>
-      <button type="submit">Create Account</button>
+      <button type="submit">Signup</button>
     </div>
   </div>
 		
 	</form>
+
+</div>
 
 <div>
     <?php include 'footer.php' ?>

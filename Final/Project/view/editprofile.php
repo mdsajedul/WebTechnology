@@ -4,6 +4,9 @@
   <title>Edit Resume</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/final/project/data/css/editprofile.css">
+  <link rel="stylesheet" type="text/css" href="/final/project/data/css/form_style.css">
+
+
 </head>
 <body>
 
@@ -168,7 +171,7 @@
     </div>
 
 
-    <div style="text-align: center;">
+    <div style="text-align: left;">
       <button type="button" onClick="document.location.href='/final/project/view/jhome.php'">Cancel</button>
       <button type="submit" name="submit">Submit</button>
     </div>

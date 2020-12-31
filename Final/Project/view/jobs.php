@@ -17,10 +17,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 }
 
-
-
-
-
 ?>
 
 <html>
@@ -75,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<br/>
 		<br/><br/>
 	</div>
-   </div>
+    </div>
 
 <div class="sortJobList" style="float: right;">
 		<label for="sortJobList">Sort by</label>
@@ -92,19 +88,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <div class="joblist">
 
-		<p><a href="view/jobdetails/accountManager.php">Accounts Manager</a></p>
-		<p>Bridge Pharmaceuticals LTD </p>
-		<p>Location: Dhaka</p>
-		<p>Education: Masters/BBA/MBA (Finance/Accounting) from any reputed university.or, B.Com/M.Com in Accounting</p>
-		<p>Experience: 3 to 5 years</p>
-		<br/><br/>
-
-		<p><a href="view/jobdetails/financialOperation.php">Head of Financial Operation</a></p>
-		<p>Evercare Hospital Dhaka </p>
-		<p>Location: Dhaka</p>
-		<p>Education: Graduate in Finance/Accounting/Economics/Banking from any reputed university.or, B.Com/M.Com in Accounting</p>
-		<p>Experience: At least 10 years</p>
-
+	<?php include("../model/model_jobs.php");
+		jobList();
+		jobListView();
+	?>
 
 </div>
 

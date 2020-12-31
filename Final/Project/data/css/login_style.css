@@ -2,21 +2,31 @@
     box-sizing: border-box;
   }
 
-  body {
+   body {
       margin:0;
       font-family: Arial;
       background-color: #B3BEC3;
       padding: 10px;
     }
 
-    .topnav {
+    .card{
+        background-color: #CCD3D7;
+         padding: 20px;
+        margin-top: 20px;
+        color:black;
+      }
+    .card a{
+        color: black;
+        padding: 14px 16px;
+         text-decoration: none;
+  }
+  .topnav {
         overflow: hidden;
         background-color:#4b636d;  
     
       }
 
-
-    .topnav a {
+ .topnav a {
         float: left;
         display: block;
         color: #f2f2f2;
@@ -29,16 +39,3 @@
         background-color:  #CCD3D7;
         color: black;
       }
-
-      .card{
-        background-color: #CCD3D7;
-         padding: 20px;
-        margin-top: 20px;
-        color:black;
-      }
-    .card a{
-        color: black;
-        padding: 14px 16px;
-         text-decoration: none;
-  }
-    

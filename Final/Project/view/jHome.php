@@ -66,9 +66,7 @@ if ($_SESSION["id"]==null){
 
 		<div class="rightcolumn">
 			<div class="card">
-				<div style="background-color: white;">
-					<?php include_once("../view/profile.php") ;?>
-				</div>
+				
 				
 			</div>
 		</div>

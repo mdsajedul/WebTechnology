@@ -88,3 +88,16 @@ input[type=text] {
     background-repeat: no-repeat;
     padding: 12px 14px 8px 20px;
   }
+
+  button[type=submit]{
+    width: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color:white;
+    background-color: #546E7A;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 14px 8px 20px;
+  }

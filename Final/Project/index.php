@@ -1,9 +1,39 @@
+
+
+<?php
+ include("model/model_jobs.php");
+ jobList();
+ $name="";
+ $cat="";
+$searchText=$searchCategory=$searchStatus=$searchErr="";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+	$counter=0;
+	if(isset($_POST["search"]) & !empty($_POST["search"])){
+		$searchText=$_POST["search"];
+
+	}
+	else{
+		$searchErr="Search box blank";
+		}
+	
+	if(isset($_POST["searchCategory"]) & !empty($_POST["searchCategory"])){
+		$searchCategory=$_POST["searchCategory"];
+	}
+	
+		jobSearch($searchText,$searchCategory);
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Find your job</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="/final/project/data/css/index.css">
+		<link rel="stylesheet" type="text/css" href="/final/project/data/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/final/project/data/css/jobs_style.css">
 </head>
 
 
@@ -43,10 +73,89 @@
 
 			<div class="jobindex">
 				<div class="card">
-					<?php include "view/jobs.php" ?>
+
+					<div class="search">
+	
+						<div class="searchform" >
+							<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" >
+								<input type="text" name="search" id="search" placeholder="Search.." required>
+			
+								<select name="searchCategory" value="0">
+									<option value="organization">Organization</option>
+									<option value="location">Location</option>
+									<option value="skill" >Skill</option>
+								</select>
+		
+								<button type="submit" name="searchbtn">Search</button>
+							</form>
+		
+							<?php 
+							echo "<br/>". $searchErr;
+							echo "<br/>".$searchText;
+							echo "<br/>".$searchCategory;
+							?>
+
+							<script>
+								function showJobs(str) {
+  									var xhttp;
+ 									 if (str == "") {
+  									  document.getElementById("search").innerHTML = "";
+  									  return;
+ 									 }
+ 									 xhttp = new XMLHttpRequest();
+ 									 xhttp.onreadystatechange = function() {
+  									  if (this.readyState == 4 && this.status == 200) {
+    										document.getElementById("search").innerHTML = this.responseText;
+   									  }
+  										};
+  									xhttp.open("GET", "/final/project/model/model_jobs.php?q="+str, true);
+ 									 xhttp.send();
+									}
+							</script>
+
+						</div>
+					</div>
+
+					<div class="job_head">
+						<div class="jobcategory">
+							<br/>
+							<label id="jobcategoryname" for="jobcategoryname">Job Category</label>
+						 	<div class="jobcategoryname">
+								<select name="jobcategoryname" value="0">
+								<option value="accounting">Accounting/Finance</option>
+								<option value="production">Production/Operation</option>
+								<option value="agro">Agro</option>
+								<option value="education">Education</option>
+								<option value="engineer/architects">Engineer/Architects</option>
+
+								</select>
+								<br/>
+								<br/><br/>
+							</div>
+   						</div>
+
+   						<div class="sortJobList" style="float: right;">
+							<label for="sortJobList">Sort by</label>
+							<select name="sortJobList" value="0">
+								<option value="deadline">Deadline</option>
+								<option value="atoz">A to Z</option>
+			
+							</select>
+			
+							<br/>
+						</div>
+
+					</div>
+
+					<div class="joblist">
+
+						<?php
+						//jobList();
+						jobListView();
+						?>
+					</div>
 				</div>
 			</div>
-
 
 		</div>
 		

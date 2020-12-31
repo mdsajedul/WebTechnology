@@ -3,13 +3,23 @@
 <head>
 	<title>Contact with us </title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/final/project/data/css/form_style.css">
+    <link rel="stylesheet" type="text/css" href="/final/project/data/css/page_style.css">
 </head>
 <body>
-<div style="display: inline-block;">
+<div>
 		<?php include 'header.php' ?>
 	</div>
 
-	<div>
+	<div class="topnav">
+    <a href="/final/project/index.php">Home</a>
+    <a href="jobseeker.php">My Jobs</a>
+    <a href="contact.php" >Contact with us</a>
+    <a href="signup.php" style="float: right;">Sign Up</a>
+    <a href="login.php" style="float: right;">Login</a>
+  </div>
+
+	<div class="card">
 		<h2>Contact information</h2>
 		<br/><br/>
 		<h3>Dial : 16836,0621836378 <small>From any number</small></h3>

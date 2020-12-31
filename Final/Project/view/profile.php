@@ -3,12 +3,20 @@
 <head>
 	<title>Resume</title>
 	<link rel="stylesheet" href="/final/project/data/css/cv_css.css">
+	<link rel="stylesheet" type="text/css" href="/final/project/data/css/page_style.css">
+
 </head>
 <body>
+
+	<div>
+		<?php include 'header.php' ?>
+	</div>
+
  <?php require("../controller/action_view_jobseeker.php") ;?>
+<div class="card" style="background-color: white">
 	<div class="cvHeader">
 		<div class="containerText">
-			<h3>View Resume</h1>
+			<h3>View Resume</h3>
 		</div>
 	</div>
 
@@ -53,6 +61,12 @@
 			</div>
 		</div>
 	</div>
+
+</div>
+
+<div>
+    <?php include 'footer.php' ?>
+  </div>
 
 </body>
 </html>
