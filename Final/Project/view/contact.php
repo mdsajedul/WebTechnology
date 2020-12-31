@@ -15,8 +15,26 @@
     <a href="/final/project/index.php">Home</a>
     <a href="jobseeker.php">My Jobs</a>
     <a href="contact.php" >Contact with us</a>
-    <a href="signup.php" style="float: right;">Sign Up</a>
-    <a href="login.php" style="float: right;">Login</a>
+    <?php
+    session_start();
+     error_reporting(0);
+			
+			if ($_SESSION["id"]==null){
+
+				?><a href="login.php" style="float: right;">Login</a> 
+				<a href="signup.php" style="float: right;">Sign Up</a>
+				 <?php
+			}
+			else{
+				?>
+				<a href="/final/project/controller/action_logout.php" style="float: right;">Sign out</a>
+				<a href="jhome.php" style="float: right;"><?php echo ucfirst($_SESSION["id"]) ; ?></a>  
+
+
+				<?php
+
+			}
+		?>
   </div>
 
 	<div class="card">

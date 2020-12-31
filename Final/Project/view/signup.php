@@ -6,7 +6,7 @@
    <link rel="stylesheet" type="text/css" href="/final/project/data/css/form_style.css">
     <link rel="stylesheet" type="text/css" href="/final/project/data/css/page_style.css">
 </head>
-</head>
+
 <body>
 
 	<div>

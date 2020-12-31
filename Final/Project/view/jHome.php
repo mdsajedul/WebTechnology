@@ -53,10 +53,12 @@ if ($_SESSION["id"]==null){
 					<a href="profile.php" > View Resume </a> <br/><br/>
 					<a href="editprofile.php">Edit Resume</a> <br/><br/>
 					<a href="emailcv.php">Email Resume</a><br/><br>
-					<a href="jobs.php">View Jobs </a><br/><br/>
 					<label><b>Mailbox</b></label><br/> <br/>
 					<a href="getmail.php"> Message </a> <br/> <br/>
-					<a href="emailedcv.php">Emailed Ressume </a> <br/>
+					<a href="emailedcv.php">Emailed Ressume </a> <br/><br/>
+					<label><b>Setting</b></label><br/> <br/>
+					<a href="changePassword.php">Change Password</a> <br/>
+
 					
 				</div>
 

@@ -1,6 +1,8 @@
 
 
 <?php
+session_start();
+ error_reporting(0);
  include("model/model_jobs.php");
  jobList();
  $name="";
@@ -47,8 +49,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<a href="index.php">Home</a>
 		<a href="view/jobseeker.php">My Jobs</a>
 		<a href="view/contact.php" >Contact with us</a>
-		<a href="view/signup.php" style="float: right;">Sign Up</a>
-		<a href="view/login.php" style="float: right;">Login</a>
+
+		<?php
+			
+			if ($_SESSION["id"]==null){
+
+				?><a href="view/login.php" style="float: right;">Login</a> 
+				<a href="view/signup.php" style="float: right;">Sign Up</a>
+				 <?php
+			}
+			else{
+				?>
+				<a href="/final/project/controller/action_logout.php" style="float: right;">Sign out</a>
+				<a href="view/jhome.php" style="float: right;"><?php echo ucfirst($_SESSION["id"]) ; ?></a>  
+
+
+				<?php
+
+			}
+		?>
 	</div>
 
 

@@ -109,4 +109,17 @@ function updateProfile($uname,$firstname,$lastname,$email,$fathername,$mothernam
 	}
 }
 
+
+function updatePassword($uname,$newPassword){
+	global $conn;
+	$sql="UPDATE jobseeker SET password='$newPassword' WHERE username='$uname' ";
+	if ($conn->query($sql) == TRUE) {
+  		return 1;
+
+	}
+	 else {
+ 	return 0;
+	}
+}
+
 ?>
