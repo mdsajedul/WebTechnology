@@ -100,37 +100,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<input type="text" name="search" id="search" placeholder="Search.." required>
 			
 								<select name="searchCategory" value="0">
+									<option value="">Select</option>
 									<option value="organization">Organization</option>
 									<option value="location">Location</option>
-									<option value="skill" >Skill</option>
 								</select>
 		
 								<button type="submit" name="searchbtn">Search</button>
 							</form>
 		
-							<?php 
-							echo "<br/>". $searchErr;
-							echo "<br/>".$searchText;
-							echo "<br/>".$searchCategory;
-							?>
-
-							<script>
-								function showJobs(str) {
-  									var xhttp;
- 									 if (str == "") {
-  									  document.getElementById("search").innerHTML = "";
-  									  return;
- 									 }
- 									 xhttp = new XMLHttpRequest();
- 									 xhttp.onreadystatechange = function() {
-  									  if (this.readyState == 4 && this.status == 200) {
-    										document.getElementById("search").innerHTML = this.responseText;
-   									  }
-  										};
-  									xhttp.open("GET", "/final/project/model/model_jobs.php?q="+str, true);
- 									 xhttp.send();
-									}
-							</script>
+						
 
 						</div>
 					</div>
@@ -140,7 +118,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							<br/>
 							<label id="jobcategoryname" for="jobcategoryname">Job Category</label>
 						 	<div class="jobcategoryname">
-								<select name="jobcategoryname" value="0">
+								<select name="jobcategoryname" value="0"  onchange="showJobs(this.value)">
+								<option value="">Select a Category</option>
 								<option value="accounting">Accounting/Finance</option>
 								<option value="production">Production/Operation</option>
 								<option value="agro">Agro</option>
@@ -153,20 +132,70 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							</div>
    						</div>
 
+   						<!--       Ajax  :Job Category    -->
+
+   						<script>
+								function showJobs(str) {
+  									var xhttp;
+ 									 if (str == "") {
+  									  //document.getElementById("search").innerHTML = "";
+  									  return;
+ 									 }
+ 									 xhttp = new XMLHttpRequest();
+ 									xhttp.onreadystatechange = function() {
+  									  if (this.readyState == 4 && this.status == 200) {
+    										document.getElementById("joblist").innerHTML = this.responseText;
+   									  }
+  										}; 
+  									xhttp.open("GET", "/final/project/model/model_jobs.php?q="+str, true);
+ 									 xhttp.send();
+									}
+							</script>
+
+
+
    						<div class="sortJobList" style="float: right;">
 							<label for="sortJobList">Sort by</label>
-							<select name="sortJobList" value="0">
-								<option value="deadline">Deadline</option>
-								<option value="atoz">A to Z</option>
+							<select name="sortJobList" value="0" onchange="sortJobs(this.value)">
+							<option value="">Select a Category</option>
+							<option value="deadline">Deadline</option>
+							<option value="ASC">A to Z</option>
+							<option value="DESC">Z to A</option>
 			
 							</select>
 			
 							<br/>
 						</div>
 
+
+
+						<!--   Ajax : Sort Job  -->
+
+   						<script>
+								function sortJobs(str) {
+  									var xhttp;
+ 									 if (str == "") {
+  									  //document.getElementById("search").innerHTML = "";
+  									  return;
+ 									 }
+ 									 xhttp = new XMLHttpRequest();
+ 									xhttp.onreadystatechange = function() {
+  									  if (this.readyState == 4 && this.status == 200) {
+    										document.getElementById("joblist").innerHTML = this.responseText;
+   									  }
+  										}; 
+  									xhttp.open("GET", "/final/project/model/model_jobs.php?sort="+str, true);
+ 									 xhttp.send();
+									}
+							</script>
+
+
+
+
+
 					</div>
 
-					<div class="joblist">
+					<div class="joblist" id="joblist">
 
 						<?php
 						//jobList();

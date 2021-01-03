@@ -1,5 +1,6 @@
 
 <?php
+error_reporting(0);
 include_once("../model/model_jobs.php");
 
 $jobId="";
@@ -9,7 +10,7 @@ if(isset($_GET["view"])){
 }
 
 
-echo $jobIdd;
+//echo $jobIdd;
 jobdetails($jobIdd);
 
 
@@ -32,12 +33,30 @@ jobdetails($jobIdd);
 	</div>
 
 	<div class="topnav">
-		<a href="index.php">Home</a>
-		<a href="view/jobseeker.php">My Jobs</a>
-		<a href="view/contact.php" >Contact with us</a>
-		<a href="view/signup.php" style="float: right;">Sign Up</a>
-		<a href="view/login.php" style="float: right;">Login</a>
-	</div>
+    <a href="/final/project/index.php">Home</a>
+    <a href="jobseeker.php">My Jobs</a>
+    <a href="contact.php" >Contact with us</a>
+    <?php
+    session_start();
+     error_reporting(0);
+			
+			if ($_SESSION["id"]==null){
+
+				?><a href="login.php" style="float: right;">Login</a> 
+				<a href="signup.php" style="float: right;">Sign Up</a>
+				 <?php
+			}
+			else{
+				?>
+				<a href="/final/project/controller/action_logout.php" style="float: right;">Sign out</a>
+				<a href="jhome.php" style="float: right;"><?php echo ucfirst($_SESSION["id"]) ; ?></a>  
+
+
+				<?php
+
+			}
+		?>
+  </div>
 
 
 	<div class="row">

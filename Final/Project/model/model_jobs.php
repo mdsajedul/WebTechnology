@@ -34,7 +34,7 @@ function jobList(){
 function jobSearch($searchText,$searchCategory){
 	global $conn;
 	global $result;
-	if($searchCategory=="Organization"){
+	if($searchCategory=="organization"){
 		$sql="SELECT * from jobdetails where companyName='$searchText' ";
 		$result = $conn->query($sql);
 	}
@@ -42,17 +42,65 @@ function jobSearch($searchText,$searchCategory){
 		$sql="SELECT * from jobdetails where location='$searchText' ";
 		$result = $conn->query($sql);
 	}
-	else if($searchCategory=="skill"){
-		$sql="SELECT * from jobdetails where jobId='$searchText' ";
-		$result = $conn->query($sql);
-	}
+	
 
 	
 
 }
 
+$catName= $_GET['q'];
+//echo $catName;
+if($catName != null){
+	jobCat();
+	
+
+}
+
+$sortName=$_GET['sort'];
+if($sortName != null){
+	jobSort();
+}
+
+function jobSort(){
+	global $conn;
+	global $sortName;
+	global $result;
+	echo $sortName;
+
+	if($sortName=="ASC"){
+		$sql="SELECT * from jobdetails ORDER BY jobName ASC ";
+		$result = $conn->query($sql);
+		jobListView();
+	}
+	else if($sortName=="DESC"){
+		$sql="SELECT * from jobdetails ORDER BY jobName DESC ";
+		$result = $conn->query($sql);
+		jobListView();
+	}
+	else if($sortName=="deadline"){
+		$sql="SELECT * FROM jobdetails WHERE deadline ORDER BY DATE_FORMAT(deadline,'%Y-%m-%d') asc";
+		$result = $conn->query($sql);
+		jobListView();
+
+	}
+
+	
+}
+
+function jobCat(){
+	global $conn;
+	global $catName;
+	global $result;
+	//echo $catName;
+
+	$sql="SELECT * from jobdetails where cat='$catName' ";
+	$result = $conn->query($sql);
+	jobListView();
+}
+
 function jobListView(){
 	global $result,$jobId;
+
 		if ($result->num_rows > 0) {
 
  		 	while($row = $result->fetch_assoc()) {

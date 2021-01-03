@@ -77,7 +77,7 @@ if ($_SESSION["id"]==null){
 
 
 	<div class="card" style="text-align: center;">
-	<a style="text-align: center;">Facing any problem? Feel free to <a href="conwithteam.php">Contact with Us</a> </a>
+	<p style="text-align: center;">Facing any problem? Feel free to <a href="conwithteam.php">Contact with Us</a> </p>
 	</div>
 
 	<div>

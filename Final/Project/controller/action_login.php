@@ -34,11 +34,20 @@ $userFound="";
          $passwordError="Enter your Password";
       }
 
+      
+
       $userFound = false;
 
      // LoginJobseeker($uname,$psw)
        
           if($counter == 0 && LoginJobseeker($uname,$psw)==true ) {
+
+            if(isset($_POST["saveInfo"])=="yes"){
+
+                  setcookie($uname, $uname, time() + (86400 * 30), "/");
+                  setcookie($uname, $psw, time() + (86400 * 30), "/");
+                 }
+
             $userFound=true;
             echo "<p>Login Successful</p>";
             echo "<script> window.location.assign('../view/jhome.php'); </script>";
@@ -70,6 +79,10 @@ $userFound="";
           <a id="pswErr"></a>
       </div>
       <br /><br />
+
+       <input type="checkbox" checked="checked" name="saveInfo" value="yes"> Rememer me <br/><br/>
+
+
       <div>
          <button type="button" onClick="document.location.href='/final/Project'">Cancel</button>
          <button type="button" onClick="document.location.href='/final/Project/view/signup.php'">Sign Up</button>

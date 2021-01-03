@@ -1,4 +1,9 @@
 <?php
+error_reporting(0);
+
+require("../controller/action_view_jobseeker.php");
+require("../model/model_email.php");
+
 $myemail=$companyemail=$message=$subject="";
 $myemailErr=$companyErr=$messageErr=$subjectErr="";
 $emailStatus="";
@@ -34,11 +39,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-    if($counter==0){
-        $emailStatus="Successfully sent email";
+
+    if(isset($_POST["addRessume"]) == "yes" && $counter == 0){
+
+       if(EmailWithCv($myemail,$companyemail,$subject,$message,$firstname,$lastname,$fathername,$mothername,$maratialStatus,$skill,$religion,$gender,$dob,$divition,$district,$subDistrict,$postOffice,$road,$proImage) == 1){
+         $emailStatus = "Message sent with resume";
+       }
+       else{
+        $emailStatus="resume & mail not sent";
+       }
+    }
+
+    else if(isset($_POST["addRessume"])==null && $counter==0){
+
+        if(EmailWithMessage($myemail,$companyemail,$subject,$message) == 1){
+            $emailStatus = "Message sent";
+        }
+        else{
+             $emailStatus="resume & mail not sent";
+        }
+        
     }
     else{
-        $emailStatus="Email sending failed !";
+      $emailStatus="resume & mail not sent";
     }
 
 
@@ -68,11 +91,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 
-    <div class="topnav">
-        <a href="../index.php">Home</a>
-        <a href="jobseeker.php">My Jobs</a>
-        <a href="../controller/action_logout.php" style="float: right;">Sign out</a>
-    </div>
+   <div class="topnav">
+    <a href="/final/project/index.php">Home</a>
+    <a href="jobseeker.php">My Jobs</a>
+    <a href="contact.php" >Contact with us</a>
+    <?php
+    session_start();
+     error_reporting(0);
+            
+            if ($_SESSION["id"]==null){
+
+                ?><a href="login.php" style="float: right;">Login</a> 
+                <a href="signup.php" style="float: right;">Sign Up</a>
+                 <?php
+            }
+            else{
+                ?>
+                <a href="/final/project/controller/action_logout.php" style="float: right;">Sign out</a>
+                <a href="jhome.php" style="float: right;"><?php echo ucfirst($_SESSION["id"]) ; ?></a>  
+
+
+                <?php
+
+            }
+        ?>
+  </div>
 
     <div class="card">
         <div class="content">
@@ -80,10 +123,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     	<h3>Email Resume to a company </h3>
 
+      
+
+
     	<form name="email" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 
     		<label for="myemail" >My email address</label><br/>
-    		<input type="text" id="myemail" name="myemail" > 
+    		<input type="text" id="myemail" name="myemail"  value="<?php echo $email; ?>"> 
     		 <span><?php echo $myemailErr;?></span>
     		<br/><br/>
 
@@ -97,7 +143,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     		 <span><?php echo $subjectErr;?></span>
     		<br/><br/>
 
-             <input type="checkbox" checked="checked" name="addRessume"> Add Resume <br/><br/>
+             <input type="checkbox" checked="checked" name="addRessume" value="yes"> Add Resume <br/><br/>
 
     		<label for="message">Message</label><br/>
     		<textarea id="message" name="message" rows="6" cols="80">
@@ -113,10 +159,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     	<?php
     	echo $emailStatus;
-    	echo "<br/>".$myemail;
-    	echo "<br/>".$companyemail;
-    	echo "<br/>".$subject;
-    	echo "<br/>".$message;
     	
     	?>
         </div>

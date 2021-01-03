@@ -15,10 +15,33 @@
 </div>
 
     <div class="topnav">
-        <a href="../index.php">Home</a>
-        <a href="jobseeker.php">My Jobs</a>
-        <a href="../controller/action_logout.php" style="float: right;">Sign out</a>
-    </div>
+    <a href="/final/project/index.php">Home</a>
+    <a href="jobseeker.php">My Jobs</a>
+    <a href="contact.php" >Contact with us</a>
+    <?php
+    session_start();
+     error_reporting(0);
+            
+            if ($_SESSION["id"]==null){
+
+                ?><a href="login.php" style="float: right;">Login</a> 
+                <a href="signup.php" style="float: right;">Sign Up</a>
+                 <?php
+            }
+            else{
+                ?>
+                <a href="/final/project/controller/action_logout.php" style="float: right;">Sign out</a>
+                <a href="jhome.php" style="float: right;"><?php echo ucfirst($_SESSION["id"]) ; ?></a>  
+
+
+                <?php
+
+            }
+        ?>
+  </div>
+
+
+    <?php require("../controller/action_view_jobseeker.php") ;?>
 
     <div class="card">
         <label><b>Here you can email your resume</b></label><br><br/>
@@ -30,7 +53,7 @@
     	<form action="/Final/Project/controller/action_emailcv.php" method="POST">
 
     		<label for="myemail" >My email address</label><br/>
-    		<input type="text" id="myemail" name="myemail" > 
+    		<input type="text" id="myemail" name="myemail" value="<?php echo $email; ?>"> 
     		<br/><br/>
 
     		<label for="companyemail">Company email address</label> <br/>
@@ -41,7 +64,7 @@
     		<input type="text" id="subject" name="subject">
     		<br/><br/>
 
-            <input type="checkbox" checked="checked" name="addRessume"> Add Resume <br/><br/>
+             <input type="checkbox" checked="checked" name="addRessume" value="yes"> Add Resume <br/><br/>
 
     		<label for="message">Message</label><br/>
     		<textarea id="message" name="message" rows="6" cols="80">
