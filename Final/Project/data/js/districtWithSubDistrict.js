@@ -3,11 +3,12 @@
   "Dhaka": {
     "Tangail": ["Tangail Sadar Upazila","Sakhipur Upazila","Basail Upazila","Madhupur Upazila","Ghatail Upazila"],
     "Dhaka": ["Dhamrai Upazila","Dohor Upazila","Keraniganj Upazila","Nawabganj Upazila","Savar Upazila","Tejgaon Upazila"],
-    "Manikganj": ["Variables", "Operators", "Functions", "Conditions"]    
+    "Manikganj": ["Manikganj Sadar Upazila", "Singair Upazila", "Ghior Upazila", "Daulatpur Upazila","Shivalaya Upazila"]    
   },
   "Rangpur": {
-    "PHP": ["Variables", "Strings", "Arrays"],
-    "SQL": ["SELECT", "UPDATE", "DELETE"]
+    "Dinajpur": ["Birampur Upazila", "Biral Upazila", "Birganj Upazila","Dinaj Sadar Upazila","Fulbari Upazila","Ghoraghat Upazila"],
+    "Kurigram": ["Kurigram Sadar Upazila", "Phulbari Upazila", "Rajarhat Upazila","Raomari Upazila","Ulipur Upazila","Chilmari Upazila"],
+    "Lalmonirhat": ["Aditmari Upazila", "Hatibandha Upazila", "Kaliganj Upazila","Lalmonirhat Sadar Upazila","Patgram Upazila"]
   }
 }
 window.onload = function() {

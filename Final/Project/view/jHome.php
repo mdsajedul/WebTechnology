@@ -31,15 +31,7 @@ if ($_SESSION["id"]==null){
 	</div>
 
 
-	<div class="noticeboard">
-		<div class="card">
-			 <?php require("../controller/action_view_noticeboard.php") ;?>
-			<h2 style="text-align:center;">Noticeboard</h2>
-			<h3><?php echo $noticeHeader; ?></h3>
-			<p><?php echo $noticeBody ; ?></p>
-			
-		</div>
-	</div>
+	
 
 
 	<div class="row">
@@ -57,7 +49,9 @@ if ($_SESSION["id"]==null){
 					<a href="getmail.php"> Message </a> <br/> <br/>
 					<a href="emailedcv.php">Emailed Ressume </a> <br/><br/>
 					<label><b>Setting</b></label><br/> <br/>
-					<a href="changePassword.php">Change Password</a> <br/>
+					<a href="changePassword.php">Change Password</a> <br/><br/>
+					<a href="deleteAccount.php">Delete Account</a> <br/>
+
 
 					
 				</div>
@@ -69,6 +63,15 @@ if ($_SESSION["id"]==null){
 		<div class="rightcolumn">
 			<div class="card">
 				
+				<div class="noticeboard">
+		<div class="card">
+			 <?php require("../controller/action_view_noticeboard.php") ;?>
+			<h2 style="text-align:center;">Noticeboard</h2>
+			<h3><?php echo $noticeHeader; ?></h3>
+			<p><?php echo $noticeBody ; ?></p>
+			
+		</div>
+	</div>
 				
 			</div>
 		</div>

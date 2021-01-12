@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 	}
 
 
-	echo $counter;
+	//echo $counter;
 
 	if($counter==0 && updatePassword($uname,$newPassword)==1){
 		$changeStatus="Password Update Successfully";

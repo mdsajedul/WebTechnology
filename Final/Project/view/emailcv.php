@@ -50,15 +50,19 @@
         <div class="content" style="padding-left: 25px">
     	
 
-    	<form action="/Final/Project/controller/action_emailcv.php" method="POST">
+    	<form action="/Final/Project/controller/action_emailcv.php" method="POST" onsubmit="return validation()">
 
     		<label for="myemail" >My email address</label><br/>
     		<input type="text" id="myemail" name="myemail" value="<?php echo $email; ?>"> 
-    		<br/><br/>
+    		<br/>
+             <a id="myemailErr"></a>
+            <br/>
 
     		<label for="companyemail">Company email address</label> <br/>
     		<input type="text" id="companyemail" name="companyemail">
-    		<br/><br/>
+    		<br/>
+             <a id="companyemailErr"></a>
+            <br/>
 
     		<label for="subject">Subject</label><br/>
     		<input type="text" id="subject" name="subject">
@@ -78,6 +82,9 @@
     	</form>
         </div>
     </div>
+
+
+<script type="text/javascript" src="/Final/Project/data/js/emailcv_validation.js"></script>
 
     <div>
     	<?php include 'footer.php' ?>

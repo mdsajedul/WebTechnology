@@ -69,9 +69,11 @@
   	</div>
 
   </div>
-<!--
+
+
+
 <script type="text/javascript" src="/Final/Project/data/js/changePassword_validation.js"></script>
--->
+
 
 <div>
     <?php include '../view/footer.php' ?>

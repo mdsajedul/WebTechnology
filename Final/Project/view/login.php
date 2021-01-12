@@ -1,3 +1,23 @@
+
+
+<?php
+
+$uname=$psw="";
+
+
+if(isset($_COOKIE["username"]) and isset($_COOKIE["password"])){
+  $uname=$_COOKIE["username"];
+  $psw=$_COOKIE["password"];
+
+}
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,14 +50,14 @@
    <form action = "/final/project/controller/action_login.php" method = "POST" onsubmit="return validation()">
       <div>
          <label for="username"><b>Username</b></label>
-         <input type="text" name="username" id="username" required />
+         <input type="text" name="username" id="username" value="<?php echo $uname ?>" required />
          <a id="usernameErr"></a>
 
       </div>
       <br /><br />
       <div>
          <label for="password"><b>Password</b></label>
-         <input type="password" name="password" id="password" required />
+         <input type="password" name="password" id="password" value="<?php echo $psw ?>" required />
          <a id="pswErr"></a>
       </div>
       <br /><br />

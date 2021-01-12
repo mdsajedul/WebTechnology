@@ -7,6 +7,8 @@
 
 	
 <?php 
+
+
 require ("../model/model_jobseeker.php");
 
   $uname = $psw = "";
@@ -14,6 +16,14 @@ require ("../model/model_jobseeker.php");
 $usernameError="";
 $passwordError="";
 $userFound="";
+
+
+
+if(isset($_COOKIE["username"]) and isset($_COOKIE["password"])){
+  $uname=$_COOKIE["username"];
+  $psw=$_COOKIE["password"];
+
+}
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $counter = 0;
@@ -44,8 +54,8 @@ $userFound="";
 
             if(isset($_POST["saveInfo"])=="yes"){
 
-                  setcookie($uname, $uname, time() + (86400 * 30), "/");
-                  setcookie($uname, $psw, time() + (86400 * 30), "/");
+                  setcookie('username', $uname, time() + (86400 * 30), "/");
+                  setcookie('password', $psw, time() + (86400 * 30), "/");
                  }
 
             $userFound=true;
@@ -66,7 +76,7 @@ $userFound="";
    <form  method = "POST" onsubmit="return validation()">
       <div>
          <label for="username"><b>Username</b></label>
-         <input type="text" name="username" id="username" required />
+         <input type="text" name="username" id="username" value="<?php echo $uname ?>" required />
          <span><?php echo $usernameError;?></span>
           <a id="usernameErr"></a>
 
@@ -74,7 +84,7 @@ $userFound="";
       <br /><br />
       <div>
          <label for="password"><b>Password</b></label>
-         <input type="password" name="password" id="password" required />
+         <input type="password" name="password" id="password" value="<?php echo $psw ?>" required />
          <span><?php echo $passwordError;?></span>
           <a id="pswErr"></a>
       </div>

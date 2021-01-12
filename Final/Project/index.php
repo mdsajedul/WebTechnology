@@ -1,5 +1,4 @@
 
-
 <?php
 session_start();
  error_reporting(0);
@@ -96,8 +95,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					<div class="search">
 	
 						<div class="searchform" >
-							<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" >
-								<input type="text" name="search" id="search" placeholder="Search.." required>
+							<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit="return validation()" >
+								<input type="text" name="search" id="search" placeholder="Search.." >
 			
 								<select name="searchCategory" value="0">
 									<option value="">Select</option>
@@ -108,10 +107,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<button type="submit" name="searchbtn">Search</button>
 							</form>
 		
-						
+						<a id="searchErr"></a>
 
 						</div>
 					</div>
+
+
+
+<script type="text/javascript" src="/Final/Project/data/js/search_validation.js"></script>
+
+
+
+
 
 					<div class="job_head">
 						<div class="jobcategory">

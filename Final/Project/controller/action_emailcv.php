@@ -108,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             else{
                 ?>
                 <a href="/final/project/controller/action_logout.php" style="float: right;">Sign out</a>
-                <a href="jhome.php" style="float: right;"><?php echo ucfirst($_SESSION["id"]) ; ?></a>  
+                <a href="/final/project/view/jhome.php" style="float: right;"><?php echo ucfirst($_SESSION["id"]) ; ?></a>  
 
 
                 <?php
@@ -126,17 +126,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       
 
 
-    	<form name="email" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+    	<form name="email" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit="return validation()">
 
     		<label for="myemail" >My email address</label><br/>
     		<input type="text" id="myemail" name="myemail"  value="<?php echo $email; ?>"> 
     		 <span><?php echo $myemailErr;?></span>
-    		<br/><br/>
+    		
+             <a id="myemailErr"></a>
+            <br/><br/>
 
     		<label for="companyemail">Company email address</label> <br/>
     		<input type="text" id="companyemail" name="companyemail">
 			 <span><?php echo $companyErr;?></span>
-    		<br/><br/>
+    		
+            <a id="companyemailErr"></a>
+            <br/><br/>
 
     		<label for="subject">Subject</label><br/>
     		<input type="text" id="subject" name="subject">
@@ -162,6 +166,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     	
     	?>
         </div>
+
+           <!-- JavaScript validation -->
+
+<script type="text/javascript" src="/Final/Project/data/js/emailcv_validation.js"></script>
     </div>
 
     <div>

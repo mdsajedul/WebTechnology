@@ -1,5 +1,6 @@
 <?php
 //session_start();
+error_reporting(0);
 $serverName="localhost";
 $username="root";
 $password="";
@@ -65,7 +66,7 @@ function jobSort(){
 	global $conn;
 	global $sortName;
 	global $result;
-	echo $sortName;
+	//echo $sortName;
 
 	if($sortName=="ASC"){
 		$sql="SELECT * from jobdetails ORDER BY jobName ASC ";
@@ -120,7 +121,7 @@ function jobListView(){
  		 		echo "<p>" . $row["location"] ."</p>";
  		 		echo "<p> Education" . $row["educationalRequrment"]."</p>";
  		 		echo "<p> Experience" . $row["experienceRequirment"]."</p>";
- 		 		echo $row["jobId"];
+ 		 		//echo $row["jobId"];
  		 		echo "<br/><br/><br/>";
  		 		?>
 

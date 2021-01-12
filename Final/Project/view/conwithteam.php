@@ -3,6 +3,7 @@ session_start();
 $message="";
 $messageErr="";
 $messageStatus="";
+$emailStatus="";
 require("../model/model_messageAdmin.php");
 $jobseeker="";
 $jobseeker=$_SESSION["id"];
@@ -78,7 +79,7 @@ if($counter==0 && ContactTeam($jobseeker,$message)==1){
 
 	<div class="card">
 		<h3>Facing any problem,tell us</h3>
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit="return validation()">
 			<textarea id="message" name="message" rows="4" cols="50"></textarea><br/>
 			
 			<br/>
@@ -86,12 +87,19 @@ if($counter==0 && ContactTeam($jobseeker,$message)==1){
 			<span><?php echo $messageErr;?></span>
 		</form>
 
+		<br/><br/>
+		<a id="messageErr"></a>
+
+
 
 <?php 
 echo $emailStatus;
 
 ?>
 	</div>
+
+
+<script type="text/javascript" src="/Final/Project/data/js/adminMessage_validation.js"></script>
 
 <br/><br/>
 <div>

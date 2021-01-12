@@ -44,6 +44,22 @@ function LoginJobseeker(&$uname,$psw){
 }
 
 
+function DeleteAccount($uname){
+	global $conn;
+	echo $uname;
+
+	$sql =" DELETE FROM `jobseeker` WHERE username='$uname' ";
+	if ($conn->query($sql) === TRUE) {
+  		return true;
+} else {
+  echo "Error deleting record: " . $conn->error;
+}
+
+
+
+}
+
+
 
 function signupJobseeker($uname,$psw,$firstname,$lastname,$fatherName,$motherName,$email,$maratialStatus,$gender,$dob){
 

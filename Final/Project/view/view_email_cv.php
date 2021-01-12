@@ -43,7 +43,6 @@ else{
 
 
 
-	<!-- Top Nav should be modify -->
 
 
    <div class="topnav">
@@ -75,7 +74,7 @@ else{
   		<h2>Details Email</h2>
 
   		<div class="content" style="padding-left: 20px">
-  			<h3>Sender : <?php echo $companyMail; ?></h3>
+  			<h3>Receiver : <?php echo $companyMail; ?></h3>
   			<h4>Subject : <?php echo $subject; ?></h4>
   			<h4>Resume : <?php echo $resumeStatus; ?></h4>
   			

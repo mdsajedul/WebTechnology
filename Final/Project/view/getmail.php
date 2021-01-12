@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $messageErr = "Fill the message box";
     $counter = $counter + 1;
   }
-  echo $counter;
+  //echo $counter;
   if($counter==0 )
   {
     SendMessage($jobseeker,$message);
@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="send_message" style="padding: 30px">
 
-      <form  method="POST" >
+      <form  method="POST" onsubmit="return validation()">
        <textarea id="message" name="message" rows="6" cols="80">
           
         </textarea> 
@@ -115,9 +115,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
       <br/>
       <br/>
+      <a id="messageErr"></a>
       <span><?php echo $messageErr; ?></span>
       
     </div>
+
+
+<script type="text/javascript" src="/Final/Project/data/js/adminMessage_validation.js"></script>
 
 
   </div>

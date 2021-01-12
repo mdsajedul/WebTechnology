@@ -4,10 +4,13 @@
 <head>
 	<title>Edit Resume</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="/final/project/data/css/form_style.css">
+    <link rel="stylesheet" type="text/css" href="/final/project/data/css/page_style.css">
 </head>
 <body>
 
 <?php
+error_reporting(0);
 
 require("../model/model_jobseeker.php");
 
@@ -189,10 +192,13 @@ function test_input($data) {
 
 
 
-<div style="display:inline-block;">
+<div >
     <?php include '../view/header.php' ?>
   </div>
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data" >
+
+<div class="card">
+
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data"  onsubmit="return validation()">
   <div  class="leftProfile">
       
     <h1>Edit Resume </h1>
@@ -201,24 +207,27 @@ function test_input($data) {
 
     <div>
       <label for="firstname"><b>First Name</b></label>
-      <input type="text"  name="firstname" value="<?php echo $firstname; ?>">
+      <input type="text"  name="firstname" id="firstname" value="<?php echo $firstname; ?>">
       <span><?php echo $firstnameErr;?></span>
+      <a id="firstnameErr"></a>
     </div>
 
     <br />
 
     <div>
       <label for="lastname"><b>Last Name</b></label>
-      <input type="text" value="<?php echo $lastname; ?>" name="lastname">
+      <input type="text" id="lastname" value="<?php echo $lastname; ?>" name="lastname">
       <span><?php echo $lastnameErr;?></span>
+      <a id="lastnameErr"></a>
     </div>
 
     <br />
 
     <div>
       <label for="email"><b>Email</b></label>
-      <input type="text" value="<?php echo $email; ?>" name="email">
+      <input type="text" id="email" value="<?php echo $email; ?>" name="email">
       <span><?php echo $emailErr;?></span>
+      <a id="emailErr"></a>
     </div>
 
     <br />
@@ -228,15 +237,17 @@ function test_input($data) {
 
     <div>
 		<label for="fdname">Father name</label>
-		<input type="text" name="fathername" value="<?php echo $fathername; ?>">
+		<input type="text" id="fathername" name="fathername" value="<?php echo $fathername; ?>">
 		 <span><?php echo $fdnameErr;?></span>
+     <a id="fathernameErr"></a>
 		<br/><br/>
 	</div>
 
 	<div>
 		<label for="mdname" >Mother name</label>
-		<input type="text" name="mothername" value="<?php echo $mothername; ?>">
+		<input type="text" id="mothername" name="mothername" value="<?php echo $mothername; ?>">
 		 <span><?php echo $mdnameErr;?></span>
+     <a id="mothernameErr"></a>
 		<br/><br/>
 		</div>
 
@@ -262,8 +273,9 @@ function test_input($data) {
 
   <div>
 		<label for ="religion" >Religion</label>
-<input type="text" name="religion" value="<?php echo $religion; ?>">
+<input type="text" id="religion" name="religion" value="<?php echo $religion; ?>">
 		 <span><?php echo $religionErr;?></span>
+     <a id="religionErr"></a>
 		 <br/><br/>
   </div>
 
@@ -314,16 +326,18 @@ Sub District: <select name="subDistrict" id="subDistrict">
 
 <div>
   <label>Post Office</label>
-  <input type="text" value="<?php echo $postOffice; ?>" name="postoffice">
+  <input type="text" id="postoffice" value="<?php echo $postOffice; ?>" name="postoffice">
   <span><?php echo $postOfficeErr;?></span>
+  <a id="postofficeErr"></a>
 </div>
 
 <br/><br/>
 
 <div>
   <label>Road</label>
-  <input type="text" value="<?php echo $road; ?>" name="road">
+  <input type="text" id="road" value="<?php echo $road; ?>" name="road">
   <span><?php echo $roadErr;?></span>
+  <a id="roadErr"></a>
 </div>
 
 <br/>
@@ -344,12 +358,15 @@ Sub District: <select name="subDistrict" id="subDistrict">
 
 </form>
 
+</div>
+
 <br />
 
 <?php 
   echo $signup_status;
 ?>
 
+<script type="text/javascript" src="/Final/Project/data/js/editprofile_validation.js"></script>
 
 <script src="/Final/Project/data/js/districtWithSubDistrict.js"></script>
 

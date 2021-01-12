@@ -22,7 +22,6 @@ session_start();
     </div>
 
 
-    <!-- Top Nav should be modify -->
 
 
    <div class="topnav">
